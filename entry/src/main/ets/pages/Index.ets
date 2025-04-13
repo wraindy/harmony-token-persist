@@ -51,7 +51,9 @@ struct Index {
             // AppStorage.delete('testProp');
 
             // 如果使用了@StorageLink，则可以手动清空（和初始化的一致即可）
-            this.testProp = '';
+            // 以下两种方法都行
+            // this.testProp = '';
+            AppStorage.set('testProp', '');
             this.message = '已清空AppStorage';
           })
       }
