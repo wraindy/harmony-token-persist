@@ -24,6 +24,13 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+
+      // 从持久化存储中获取信息（k-v存储）
+      // key = "testProp"
+      // 如果持久化存储中不存在key，则自动初始化，使得value = "initData"
+      // 如果持久化存储中存在key，则value = 持久化存储中的值
+      // 以上数据会自动同步到AppStorage的相同的key中
+      PersistentStorage.persistProp("testProp","initData")
     });
   }
 
