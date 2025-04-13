@@ -39,6 +39,22 @@ struct Index {
             this.message = '@AppStorage("testProp")：' + AppStorage.get('testProp');
           })
       }
+      Button() {
+        Text('清空testProp数据')
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+          .fontColor(Color.White)
+          .onClick(() => {
+
+            // 以下两种方法都不能清空AppStorage，因为使用了@StorageLink
+            // AppStorage.clear();
+            // AppStorage.delete('testProp');
+
+            // 如果使用了@StorageLink，则可以手动清空（和初始化的一致即可）
+            this.testProp = '';
+            this.message = '已清空AppStorage';
+          })
+      }
 
       TextInput({placeholder: '请输入数据'})
         .onChange((text) => {
